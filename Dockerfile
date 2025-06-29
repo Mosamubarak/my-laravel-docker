@@ -10,7 +10,7 @@ RUN a2enmod rewrite
 WORKDIR /var/www/html
 
 # Copy the Laravel application files
-COPY ../src/laravel-app .
+COPY src/laravel-app /var/www/html
 
 # Create storage and bootstrap/cache directories and set permissions
 RUN mkdir -p storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache
