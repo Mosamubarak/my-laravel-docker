@@ -9,9 +9,13 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src/laravel-app:/var/www/html
+      - ./src/laravel-app/public:/var/www/html/public
+      - ./src/laravel-app/storage:/var/www/html/storage
     depends_on:
       - db
+    command: /bin/bash -c "composer install && php artisan key:generate && php artisan migrate && php-fpm"
+    networks:
+      - laravel
 
   db:
     image: mysql:8.0
@@ -25,3 +29,9 @@ services:
       - "3306:3306"
     volumes:
       - ./src/laravel-app/mysql-data:/var/lib/mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
