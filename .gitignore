@@ -1,0 +1,27 @@
+# Laravel
+/vendor
+/node_modules
+.env
+.env.*
+/storage/*.key
+/storage/app/public
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+/storage/logs
+
+# Docker & database
+src/laravel-app/mysql-data
+src/laravel-app/database/database.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+
+# NPM
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

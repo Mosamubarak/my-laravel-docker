@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile
+    container_name: laravel-app
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/laravel-app:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: ./Docker/database
+      dockerfile: Dockerfile
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: laravel_db
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/laravel-app/mysql-data:/var/lib/mysql
