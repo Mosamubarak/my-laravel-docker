@@ -14,9 +14,7 @@ services:
       - db
 
   db:
-    build:
-      context: ./Docker/database
-      dockerfile: Dockerfile
+    image: mysql:8.0
     container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: root_password
